@@ -1,3 +1,5 @@
+---
+
 ### **MobileProgramming Repository Summary**
 This repository focuses on learning and practicing mobile application development using Android. It includes various practical exercises that cover fundamental concepts such as:
 
@@ -7,3 +9,5 @@ This repository focuses on learning and practicing mobile application developmen
 4. **Event Handling**: Managing user interactions like button clicks for operations (e.g., increment, decrement, and reset counters).
 5. **Theming and Styling**: Implementing a responsive UI that supports both light and dark themes, with customized colors and styles.
 6. **Debugging and Testing**: Utilizing tools like Logcat to observe Activity transitions and debug issues.
+
+---
