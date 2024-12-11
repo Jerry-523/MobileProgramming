@@ -1,0 +1,8 @@
+<resources>
+    <!-- Tema para Modo Escuro -->
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue_dark</item>
+        <item name="colorAccent">@color/blue</item>
+    </style>
+</resources>

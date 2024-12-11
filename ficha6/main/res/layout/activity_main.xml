@@ -1,0 +1,46 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30sp"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/btnIncrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Incrementar"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_margin="8dp"
+        android:elevation="4dp" />
+
+    <Button
+        android:id="@+id/btnDecrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decrementar"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_margin="8dp"
+        android:elevation="4dp" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redefinir"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_margin="8dp"
+        android:elevation="4dp" />
+
+</LinearLayout>
