@@ -1,67 +1,63 @@
 package prog.mobile.friendlist;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendViewHolder> {
-    private List<Friend> friendList;
-    private Context context;
 
-    public FriendAdapter(Context context, List<Friend> friendList) {
-        this.context = context;
-        this.friendList = friendList;
+    private List<Friend> friends;
+    private OnFriendClickListener listener;
+
+    public interface OnFriendClickListener {
+        void onFriendClick(int position);
+    }
+
+    public FriendAdapter(List<Friend> friends, OnFriendClickListener listener) {
+        this.friends = friends;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_friend, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_item, parent, false);
         return new FriendViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull FriendViewHolder holder, int position) {
-        Friend friend = friendList.get(position);
-        holder.textViewName.setText(friend.getName());
-        holder.textViewEmail.setText(friend.getEmail());
-        holder.textViewAge.setText("Idade: " + friend.getAge());
-
-        holder.itemView.setOnClickListener(v -> {
-            new AlertDialog.Builder(context)
-                    .setTitle("Opções")
-                    .setMessage("Enviar email ou deletar amigo?")
-                    .setPositiveButton("Enviar Email", (dialog, which) -> {
-
-                    })
-                    .setNegativeButton("Deletar", (dialog, which) -> {
-                        friendList.remove(position);
-                        notifyDataSetChanged();
-                    })
-                    .show();
-        });
+        Friend friend = friends.get(position);
+        holder.name.setText(friend.getName());
+        holder.email.setText(friend.getEmail());
+        holder.age.setText("Age: " + friend.getAge());
+        holder.itemView.setOnClickListener(v -> listener.onFriendClick(position));
     }
 
     @Override
     public int getItemCount() {
-        return friendList.size();
+        return friends.size();
     }
 
     public static class FriendViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewName, textViewEmail, textViewAge;
+
+        TextView name;
+        TextView email;
+        TextView age;
 
         public FriendViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.textViewFriendName);
-            textViewEmail = itemView.findViewById(R.id.textViewFriendEmail);
-            textViewAge = itemView.findViewById(R.id.textViewFriendAge);
+            name = itemView.findViewById(R.id.friend_name);
+            email = itemView.findViewById(R.id.friend_email);
+            age = itemView.findViewById(R.id.friend_age);
         }
     }
 }
-
